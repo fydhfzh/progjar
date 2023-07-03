@@ -1,0 +1,41 @@
+1. Autentikasi:
+Command: login <username> <password>
+Deskripsi: Autentikasi user berdasarkan username dan password yang diberikan
+Respon:
+- Jika berhasil, maka akan diberikan token yang berfungsi untuk menyimpan sesi user dan respon berhasil
+- Jika tidak berhasil, maka akan diberikan respon kesalahan 
+
+2. Registrasi:
+Command: register <username> <name> <password>
+Deskripsi: Registrasi user berdasarkan username, nama, dan password yang diberikan
+Respon:
+- Jika berhasil, maka akan mengembalikan respon berhasil dan data user akan ditambahkan ke server
+- Jika tidak berhasil, maka akan diberikan respon kesalahan
+
+3. Logout:
+Command: logout
+Deskripsi: Logout akun user yang sedang login dengan menghapus token yang telah didapatkan sebelumnya
+Respon:
+- Jika berhasil, maka token yang disimpan akan dihapus dan mengembalikan respon berhasil
+- Jika tidak berhasil, maka akan diberikan respon kesalahan
+
+4. Private Chat:
+Command: send <username>@<server_id> <message>
+Deskripsi: Pengiriman pesan kepada user yang diinginkan
+Respon:
+- Jika berhasil, maka message akan dikirimkan kepada user dan mengembalikan respon berhasil
+- Jika tidak berhasil, maka akan diberikan respon kesalahan
+
+5. Private Chat Multirealm
+Command: send <username>@<server_id> <message>
+Deskripsi: Pengiriman pesan kepada user yang diinginkan
+Respon:
+- Jika berhasil, maka message akan dikirimkan kepada user dan mengembalikan respon berhasil
+- Jika tidak berhasil, maka akan diberikan respon kesalahan
+
+6. Group Chat Lokal / Multirealm
+Command: sendgroup <group_id> <message>
+Deskripsi: Pengiriman pesan kepada anggota grup tertentu
+Respon:
+- Jika berhasil, maka message akan dikirimkan kepada semua anggota grup dan mengembalikan respon berhasil
+- Jika tidak berhasil, maka akan diberikan respon kesalahan
