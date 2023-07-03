@@ -197,22 +197,6 @@ class Chat:
 
         return {'status': 'ok', 'inbox': inbox}
     
-    # def server_file(self, username_to, filename, content):
-    #     path_to = '../../' + 'files/' + username_to + '/'
-    #     print(os.path.abspath(path_to))
-    #     os.chdir(path_to)
-    #     print('lewat brooo')
-
-    #     if not os.path.exists(filename):
-    #         fp_new = open(filename, 'wb+')
-    #         fp_new.write(bytes(content, 'utf-8'))
-    #         fp_new.close()
-    #         os.chdir('../../')
-    #         return {'status': 'ok', 'message': 'File terkirim'}
-    #     else:
-    #         os.chdir('../../')
-    #         return {'status': 'error', 'message': 'File sudah ada'}
-    
     def server_inbox(self, username_from, username_to, message):
         s_fr = self.get_user(username_from)
         s_to = self.get_user(username_to)
@@ -318,96 +302,4 @@ class Chat:
                 self.groups[group_id].append(user)
         
         return {'status': 'ok', 'message': 'Group {} telah dibuat'.format(group_id)}
-
-    # def send_file(self, session_id, server_id, username_to, filename):
-    #     username_from = self.sessions[session_id]['username']
-
-    #     if username_to == username_from:
-    #         return {'status': 'error', 'message': 'Tidak bisa mengirim ke diri sendiri'}
-    #     if session_id not in self.sessions:
-    #         return {'status': 'error', 'message': 'Session tidak ditemukan'}
-    #     if username_to not in self.users:
-    #         return {'status': 'error', 'message': 'User tujuan tidak ditemukan'}
-    #     if server_id not in self.servers:
-    #         return {'status': 'ERROR', 'message': 'Server Tidak Ada'}
-    #     path_from = './files/' + username_from + '/'
-    #     path_to = '../' + username_to + '/'
-    #     print(os.path.abspath(path_from))
-    #     os.chdir(path_from)
-
-    #     if os.path.exists(filename):
-    #         fp = open(f"{filename}", 'rb')
-    #         content = fp.read()
-    #         fp.close()
-    #         os.chdir(path_to)
-    #         if os.path.exists(f"{filename}"):
-    #             os.chdir('../../')
-    #             return {'status': 'error', 'message': 'File sudah ada di user {}'.format(username_to)}
-    #         fp_new = open(filename, 'wb+')
-    #         fp_new.write(content)
-    #         fp_new.close()
-    #         os.chdir('../../')
-    #         return {'status': 'ok', 'message': 'File terkirim'}
-    #     else:
-    #         os.chdir('../../')
-    #         return {'status': 'error', 'message': 'File tidak ada'}
-
-    # def send_file_to_server(self, session_id, server_to, username_to, filename):
-    #     username_from = self.sessions[session_id]['username']
-
-    #     if session_id not in self.sessions:
-    #         return {'status': 'error', 'message': 'Session tidak ditemukan'}
-    #     if username_to == username_from:
-    #         return {'status': 'error', 'message': 'Tidak bisa mengirim ke diri sendiri'}
-    #     if username_to not in self.users:
-    #         return {'status': 'error', 'message': 'User tujuan tidak ditemukan'}
-    #     if server_to not in self.servers:
-    #         return {'status': 'ERROR', 'message': 'Server Tidak Ada'}
-        
-    #     path_from = './files/' + username_from + '/'
-    #     print(os.path.abspath(path_from))
-    #     os.chdir(path_from)
-
-    #     if os.path.exists(filename):
-    #         fp = open(f"{filename}", 'rb')
-    #         content = fp.read()
-    #         fp.close()
-    #         self.servers[server_to].put('serverfile {} {} {}'.format(username_to, filename, content.decode()))
-    #         os.chdir('../../')
-    #         return {'status': 'ok', 'message': 'File terkirim'}
-    #     else:
-    #         os.chdir('../../')
-    #         return {'status': 'error', 'message': 'File tidak ada'}
-    
-    # def send_file_group(self, session_id, server_from, group_id, filename):
-    #     if session_id not in self.sessions:
-    #         return {'status': 'error', 'message': 'Session tidak ditemukan'}
-    #     if group_id not in self.groups:
-    #         return {'status': 'error', 'message': 'Group {} tidak ditemukan'.format(group_id)}
-
-    #     username_from = self.sessions[session_id]['username']
-    #     path_from = 'files/' + username_from + '/'
-
-    #     os.chdir(path_from)
-    #     if not os.path.exists(filename):
-    #         os.chdir('../../')
-    #         return {'status': 'error', 'message': 'File tidak ada'}
-
-    #     os.chdir('../../')
-    #     for member in self.groups[group_id]:
-    #         address = member.split('@')
-    #         username_to = address[0].strip()
-    #         server_to = address[1].strip()            
-    #         if username_to == username_from:
-    #             continue
-
-    #         if server_to == server_from:
-    #             self.send_file(session_id, server_from, username_to, filename)
-    #             continue
-    #         else:
-    #             self.send_file_to_server(session_id, server_to, username_to, filename)
-
-    #     os.chdir('../../')
-        
-    #     return {'status': 'ok', 'message': 'File terkirim ke group {}'.format(group_id)}
         
